@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from lgca import get_lgca
 import numpy as np
 
-lx = 100
+lx = 200
 ly = round(lx * 1.1547)  # distance in y direction is smaller than in x direction
 ly += 1 if ly % 2 == 1 else 0
 dims = lx, ly
@@ -21,7 +21,7 @@ r_d = 0.2
 # %%
 
 lgca = get_lgca(geometry='hx', dims=dims, interaction='go_or_grow_kappa', ve=False, ib=True, bc='reflect', restchannels=1,
-                r_b=1, capacity=100, nodes=nodes, kappa=kappa, kappa_std=kappa_std, r_d=r_d, theta=0.25)
+                r_b=1, capacity=capacity, nodes=nodes, kappa=kappa, kappa_std=kappa_std, r_d=r_d, theta=0.25)
 
 
 # %%
