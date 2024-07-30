@@ -4,10 +4,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import string
 from plot_funcs import label_axes
+from matplotlib import animation
+
 figsize = 7.086614, 8.858268
 
 # %%
-lgca1 = load(open('r_d_0.2_theta_0.2_lgca.pkl', 'rb'))
+lgca1 = load(open('r_d_0.0_theta_0.5_lgca.pkl', 'rb'))
 
 # %%
 capacity = lgca1.interaction_params['capacity']
@@ -81,12 +83,9 @@ plt.show()
 # %%
 anim = lgca1.animate_density(vmax=capacity, cmap='hot_r', interval=10)
 plt.yticks(ticks=np.arange(0, lgca1.dims[1], 50), labels=np.arange(0, lgca1.dims[1], 50))
-plt.suptitle('Cell death, low switch threshold')
-# anim.save('attractive_regime.mp4', dpi=300, bitrate=-1, fps=24)
+plt.suptitle('No cell death')
+anim.save('independent_regime.mp4', dpi=300, bitrate=-1, fps=24)
 plt.show()
-
-# %%
-from matplotlib import animation
 
 # %%
 fig, pc, cmap = lgca1.plot_prop_spatial(lgca1.nodes_t[0], vmin=-5, vmax=5, cmap='coolwarm', cbarlabel='Switch parameter')
@@ -101,7 +100,7 @@ def update(n):
 
 
 ani = animation.FuncAnimation(fig, update, interval=10, frames=lgca1.dens_t.shape[0], repeat=True)
-plt.suptitle('Cell death, low switch threshold')
-anim.save('attractive_regime_kappa.mp4', dpi=300, bitrate=-1, fps=24)
-plt.show()
+plt.suptitle('No cell death', fontsize=12, fontweight='bold')
+ani.save('independent_regime_kappa.mp4', dpi=300, bitrate=-1, fps=24)
+# plt.show()
 
